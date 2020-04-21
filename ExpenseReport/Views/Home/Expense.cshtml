@@ -1,0 +1,168 @@
+﻿@model IEnumerable<ExpenseReport.Expens>
+
+@{
+    ViewBag.Title = "Expense";
+
+}
+<style>
+    /* Style the tab */
+    .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        margin: 2px;
+    }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+                background-color: #ddd;
+            }
+
+            /* Create an active/current tablink class */
+            .tab button.active {
+                background-color: #ccc;
+            }
+
+    /* Style the tab content */
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+</style>
+
+<h2>Expenses</h2>
+<br />
+
+<div class="tab">
+    <div class="row">
+        <button class="tablinks " onclick="openCity(event, 'January')">January</button>
+        <button class="tablinks " onclick="openCity(event, 'February')">February</button>
+        <button class="tablinks " onclick="openCity(event, 'March')">March</button>
+        <button class="tablinks " onclick="openCity(event, 'April')">April</button>
+        <button class="tablinks " onclick="openCity(event, 'May')">May</button>
+        <button class="tablinks " onclick="openCity(event, 'June')">June</button>
+        <button class="tablinks " onclick="openCity(event, 'July')">July</button>
+        <button class="tablinks " onclick="openCity(event, 'August')">August</button>
+        <button class="tablinks " onclick="openCity(event, 'September')">September</button>
+        <button class="tablinks " onclick="openCity(event, 'October')">October</button>
+        <button class="tablinks " onclick="openCity(event, 'November')">November</button>
+        <button class="tablinks " onclick="openCity(event, 'December')">December</button>
+    </div>
+</div>
+
+
+    <div id="January" class="tabcontent">
+        <table id="januaryTable" class="table table-active">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.TransactionMonth == "January")
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+<div id="February" class="tabcontent">
+
+
+</div>
+
+<div id="March" class="tabcontent">
+
+
+</div>
+
+<div id="April" class="tabcontent">
+
+
+</div>
+
+<div id="May" class="tabcontent">
+
+</div>
+
+<div id="June" class="tabcontent">
+
+</div>
+
+<div id="July" class="tabcontent">
+
+</div>
+
+<div id="August" class="tabcontent">
+
+</div>
+
+<div id="September" class="tabcontent">
+
+</div>
+
+<div id="October" class="tabcontent">
+
+</div>
+
+<div id="November" class="tabcontent">
+
+</div>
+
+<div id="December" class="tabcontent">
+
+</div>
+
+
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")*@
+</p>
+
+
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
