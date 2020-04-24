@@ -12,16 +12,6 @@ namespace ExpenseReport.Controllers
 
         public ActionResult Index()
         {
-            var expenseTable = DB.Expenses.ToList();
-            var insertTable = new List<String>();
-
-            foreach (var e in expenseTable)
-            {
-                var text = "<div>";
-                var endText = "</div>";
-                text += e.TransactionType + " " + e.Name + " $" + e.Amount + " " + e.Date + endText;
-            }
-
             return View();
         }
 
@@ -59,6 +49,39 @@ namespace ExpenseReport.Controllers
             var incomeList = DB.Incomes.ToList();
 
             return View();
+        }
+
+        public ActionResult Submission()
+        {
+            return View();
+        }
+
+        public ActionResult AddTransaction(Expens expense)
+        {
+            try
+            {
+                var transaction = new Expens()
+                {
+                    Amount = expense.Amount,
+                    CreatedDate = DateTime.Now,
+                    Date = expense.Date,
+                    Name = expense.Name,
+                    TransactionMonth = expense.Date.Month.ToString(),
+                    TransactionType = expense.TransactionType,
+                    WorkExpense = expense.WorkExpense,
+                };
+
+
+                DB.Expenses.Add(transaction);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            DB.SaveChanges();
+
+            return View("Submission");
         }
 
     }

@@ -320,6 +320,7 @@
     <Content Include="Views\Home\Expense.cshtml" />
     <Content Include="Views\Home\Income.cshtml" />
     <Content Include="Views\Home\Bills.cshtml" />
+    <Content Include="Views\Home\Submission.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

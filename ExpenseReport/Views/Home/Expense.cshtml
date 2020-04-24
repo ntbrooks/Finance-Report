@@ -39,34 +39,66 @@
     .tabcontent {
         display: none;
         padding: 6px 12px;
-        border: 1px solid #ccc;
+        /*border: 1px solid #ccc;*/
         border-top: none;
     }
 </style>
-
+<br />
 <h2>Expenses</h2>
 <br />
 
 <div class="tab">
     <div class="row">
-        <button class="tablinks " onclick="openCity(event, 'January')">January</button>
-        <button class="tablinks " onclick="openCity(event, 'February')">February</button>
-        <button class="tablinks " onclick="openCity(event, 'March')">March</button>
-        <button class="tablinks " onclick="openCity(event, 'April')">April</button>
-        <button class="tablinks " onclick="openCity(event, 'May')">May</button>
-        <button class="tablinks " onclick="openCity(event, 'June')">June</button>
-        <button class="tablinks " onclick="openCity(event, 'July')">July</button>
-        <button class="tablinks " onclick="openCity(event, 'August')">August</button>
-        <button class="tablinks " onclick="openCity(event, 'September')">September</button>
-        <button class="tablinks " onclick="openCity(event, 'October')">October</button>
-        <button class="tablinks " onclick="openCity(event, 'November')">November</button>
-        <button class="tablinks " onclick="openCity(event, 'December')">December</button>
+        <div class="col-sm-2">
+            <button class="tablinks" onclick="openCity(event, 'January')">January</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="tablinks" onclick="openCity(event, 'February')">February</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="tablinks" onclick="openCity(event, 'March')">March</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="tablinks" onclick="openCity(event, 'April')">April</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="tablinks" onclick="openCity(event, 'May')">May</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="tablinks" onclick="openCity(event, 'June')">June</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <button class="tablinks" onclick="openCity(event, 'July')">July</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="tablinks" onclick="openCity(event, 'August')">August</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="tablinks" onclick="openCity(event, 'September')">September</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="tablinks" onclick="openCity(event, 'October')">October</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="tablinks" onclick="openCity(event, 'November')">November</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="tablinks" onclick="openCity(event, 'December')">December</button>
+        </div>
     </div>
 </div>
 
+<div class="row">
+    <h4>Summary</h4>
 
+</div>
+
+
+<br />
     <div id="January" class="tabcontent">
-        <table id="januaryTable" class="table table-active">
+        <table id="januaryTable" class="table table-active table-striped table-dark">
             <thead>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.Id)</th>
@@ -94,55 +126,351 @@
                 }
             </tbody>
         </table>
+    </div>
+
+    <div id="February" class="tabcontent">
+        <table id="februaryTable" class="table table-active table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.TransactionMonth == "February")
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
 
     </div>
 
-<div id="February" class="tabcontent">
+    <div id="March" class="tabcontent">
+        <table id="marchTable" class="table table-active table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.TransactionMonth == "March")
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
 
+    </div>
 
-</div>
+    <div id="April" class="tabcontent">
+        <table id="aprilTable" class="table table-active table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.TransactionMonth == "April")
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
 
-<div id="March" class="tabcontent">
+    </div>
 
+    <div id="May" class="tabcontent">
+        <table id="mayTable" class="table table-active table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.TransactionMonth == "May")
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
 
-</div>
+    <div id="June" class="tabcontent">
+        <table id="juneTable" class="table table-active table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.TransactionMonth == "June")
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
 
-<div id="April" class="tabcontent">
+    <div id="July" class="tabcontent">
+        <table id="julyTable" class="table table-active table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.TransactionMonth == "July")
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
 
+    <div id="August" class="tabcontent">
+        <table id="augustTable" class="table table-active table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.TransactionMonth == "August")
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
 
-</div>
+    <div id="September" class="tabcontent">
+        <table id="septemberTable" class="table table-active table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.TransactionMonth == "September")
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
 
-<div id="May" class="tabcontent">
+    <div id="October" class="tabcontent">
+        <table id="octoberTable" class="table table-active table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.TransactionMonth == "October")
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
 
-</div>
+    <div id="November" class="tabcontent">
+        <table id="novemberTable" class="table table-active table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.TransactionMonth == "November")
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
 
-<div id="June" class="tabcontent">
-
-</div>
-
-<div id="July" class="tabcontent">
-
-</div>
-
-<div id="August" class="tabcontent">
-
-</div>
-
-<div id="September" class="tabcontent">
-
-</div>
-
-<div id="October" class="tabcontent">
-
-</div>
-
-<div id="November" class="tabcontent">
-
-</div>
-
-<div id="December" class="tabcontent">
-
-</div>
+    <div id="December" class="tabcontent">
+        <table id="decemberTable" class="table table-active table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.TransactionMonth == "December")
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
 
 
 <p>
