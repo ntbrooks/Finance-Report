@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExpenseReport.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -54,9 +55,28 @@ namespace ExpenseReport.Controllers
 
             ViewBag.Titles = expenseList.Select(x => x.TransactionType).Distinct().ToList();
 
+            var yearlyList = new List<Yearly>();
 
+            foreach (var lines in transType)
+            {
+                Yearly year = new Yearly();
+                year.TransactionType = lines.Expens;
 
-            return View(expenseList);
+                year.NumOfTransactions = lines.expenseList.Count;
+                decimal total = 0;
+
+                foreach (var item in lines.expenseList)
+                {
+                    total += item.Amount;
+                }
+                decimal average = total / year.NumOfTransactions;
+                year.TotalSpent = total;
+                year.AverageSpent = Decimal.Round(average, 2);
+
+                yearlyList.Add(year);
+            }
+
+            return View(yearlyList);
         }
 
         public ActionResult Income()
