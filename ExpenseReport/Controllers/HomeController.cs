@@ -22,7 +22,7 @@ namespace ExpenseReport.Controllers
             return View();
         }
 
-        public ActionResult Expense()
+        public ActionResult Monthly()
         {
             var expenses = new List<Expens>();
             var expenseList = DB.Expenses.ToList();
@@ -40,6 +40,21 @@ namespace ExpenseReport.Controllers
 
                 expenses.Add(expense);
             }
+
+            return View(expenseList);
+        }
+
+        public ActionResult Yearly()
+        {
+            var expenseList = DB.Expenses.ToList();
+
+            var transType = expenseList.GroupBy(x => x.TransactionType)
+                .Select(group => new { Expens = group.Key, expenseList = group.ToList() })
+                .ToList();
+
+            ViewBag.Titles = expenseList.Select(x => x.TransactionType).Distinct().ToList();
+
+
 
             return View(expenseList);
         }

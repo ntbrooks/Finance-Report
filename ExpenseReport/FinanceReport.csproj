@@ -317,10 +317,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Home\Expense.cshtml" />
+    <Content Include="Views\Home\Monthly.cshtml" />
     <Content Include="Views\Home\Income.cshtml" />
     <Content Include="Views\Home\Bills.cshtml" />
     <Content Include="Views\Home\Submission.cshtml" />
+    <Content Include="Views\Home\Yearly.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
