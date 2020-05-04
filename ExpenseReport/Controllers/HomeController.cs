@@ -51,7 +51,7 @@ namespace ExpenseReport.Controllers
                 }
 
                 month.NumOfTransactions = list.Count;
-                month.AverageSpent = Decimal.Round(month.TotalSpent / month.NumOfTransactions);
+                month.AverageSpent = Decimal.Round((month.TotalSpent / month.NumOfTransactions), 2);
                 monthList.Add(month);
             }
 
