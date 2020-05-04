@@ -25,22 +25,37 @@ namespace ExpenseReport.Controllers
 
         public ActionResult Monthly()
         {
-            var expenses = new List<Expens>();
             var expenseList = DB.Expenses.ToList();
 
-            foreach (var item in expenseList)
-            {
-                Expens expense = new Expens();
-                expense.Amount = item.Amount;
-                expense.CreatedDate = item.CreatedDate;
-                expense.Date = item.Date;
-                expense.Id = item.Id;
-                expense.Name = item.Name;
-                expense.TransactionType = item.TransactionType;
-                expense.WorkExpense = item.WorkExpense;
+            // Group transactions by month
+            var groupMonths = expenseList.GroupBy(x => x.TransactionMonth)
+                .Select(group => new { Expens = group.Key, expenseList = group.ToList() })
+                .ToList();
 
-                expenses.Add(expense);
+            var itemList = new List<List<Expens>>();
+            foreach (var transaction in groupMonths)
+            {
+                itemList.Add(transaction.expenseList);
             }
+            
+            var monthList = new List<Monthly>();
+            
+            foreach (var list in itemList)
+            {
+                var month = new Monthly();
+                
+                foreach (var item in list)
+                {
+                    month.TotalSpent += item.Amount;
+                    month.TransactionMonth = item.TransactionMonth;
+                }
+
+                month.NumOfTransactions = list.Count;
+                month.AverageSpent = Decimal.Round(month.TotalSpent / month.NumOfTransactions);
+                monthList.Add(month);
+            }
+
+            ViewBag.Months = monthList;
 
             return View(expenseList);
         }

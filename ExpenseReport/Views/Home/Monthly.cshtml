@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<ExpenseReport.Expens>
+@using System.Configuration
 
 @{
     ViewBag.Title = "Expense";
@@ -89,387 +90,704 @@
         </div>
     </div>
 </div>
+<br />
 
-<div class="row">
+@*January Table*@
+<div id="January" class="tabcontent">
     <h4>Summary</h4>
-    <div class="row"></div>
+    <div id="summary">
+        <table id="summaryTable" class="table table-active table-striped table-light">
+            <thead>
+                <tr>
+                    <th>Number of Transactions</th>
+                    <th>Average Spent</th>
+                    <th>Total Spent</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var month in ViewBag.Months)
+                {
+                    if (month.TransactionMonth == ConfigurationManager.AppSettings["January"])
+                    {
+                        <tr>
+                            <td>@month.NumOfTransactions</td>
+                            <td>$@month.AverageSpent</td>
+                            <td>$@month.TotalSpent</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <h4>Transactions</h4>
+    <table id="januaryTable" class="table table-active table-striped table-light">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                <th>@Html.DisplayNameFor(model => model.Date)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.TransactionMonth == ConfigurationManager.AppSettings["January"])
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
 </div>
 
-<br />
-    <div id="January" class="tabcontent">
-        <table id="januaryTable" class="table table-active table-striped table-dark">
+@*February Table*@
+<div id="February" class="tabcontent">
+    <h4>Summary</h4>
+    <div id="summary">
+        <table id="summaryTable" class="table table-active table-striped table-light">
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
-                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
-                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                    <th>Number of Transactions</th>
+                    <th>Average Spent</th>
+                    <th>Total Spent</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var month in ViewBag.Months)
                 {
-                    if (item.TransactionMonth == "January")
+                    if (month.TransactionMonth == ConfigurationManager.AppSettings["February"])
                     {
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
-                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@month.NumOfTransactions</td>
+                            <td>$@month.AverageSpent</td>
+                            <td>$@month.TotalSpent</td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
     </div>
-
-    <div id="February" class="tabcontent">
-        <table id="februaryTable" class="table table-active table-striped table-dark">
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
-                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
-                    <th>@Html.DisplayNameFor(model => model.Date)</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
+    <h4>Transactions</h4>
+    <table id="februaryTable" class="table table-active table-striped table-light">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                <th>@Html.DisplayNameFor(model => model.Date)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.TransactionMonth == ConfigurationManager.AppSettings["February"])
                 {
-                    if (item.TransactionMonth == "February")
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
-                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                        </tr>
-                    }
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    </tr>
                 }
-            </tbody>
-        </table>
+            }
+        </tbody>
+    </table>
+</div>
 
-    </div>
-
-    <div id="March" class="tabcontent">
-        <table id="marchTable" class="table table-active table-striped table-dark">
+@*March Table*@
+<div id="March" class="tabcontent">
+    <h4>Summary</h4>
+    <div id="summary">
+        <table id="summaryTable" class="table table-active table-striped table-light">
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
-                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
-                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                    <th>Number of Transactions</th>
+                    <th>Average Spent</th>
+                    <th>Total Spent</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var month in ViewBag.Months)
                 {
-                    if (item.TransactionMonth == "March")
+                    if (month.TransactionMonth == ConfigurationManager.AppSettings["March"])
                     {
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
-                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>
-
-    </div>
-
-    <div id="April" class="tabcontent">
-        <table id="aprilTable" class="table table-active table-striped table-dark">
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
-                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
-                    <th>@Html.DisplayNameFor(model => model.Date)</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    if (item.TransactionMonth == "April")
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
-                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>
-
-    </div>
-
-    <div id="May" class="tabcontent">
-        <table id="mayTable" class="table table-active table-striped table-dark">
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
-                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
-                    <th>@Html.DisplayNameFor(model => model.Date)</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    if (item.TransactionMonth == "May")
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
-                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@month.NumOfTransactions</td>
+                            <td>$@month.AverageSpent</td>
+                            <td>$@month.TotalSpent</td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
     </div>
+    <h4>Transactions</h4>
+    <table id="marchTable" class="table table-active table-striped table-light">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                <th>@Html.DisplayNameFor(model => model.Date)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.TransactionMonth == ConfigurationManager.AppSettings["March"])
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
 
-    <div id="June" class="tabcontent">
-        <table id="juneTable" class="table table-active table-striped table-dark">
+</div>
+
+@*April Table*@
+<div id="April" class="tabcontent">
+    <h4>Summary</h4>
+    <div id="summary">
+        <table id="summaryTable" class="table table-active table-striped table-light">
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
-                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
-                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                    <th>Number of Transactions</th>
+                    <th>Average Spent</th>
+                    <th>Total Spent</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var month in ViewBag.Months)
                 {
-                    if (item.TransactionMonth == "June")
+                    if (month.TransactionMonth == ConfigurationManager.AppSettings["April"])
                     {
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
-                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@month.NumOfTransactions</td>
+                            <td>$@month.AverageSpent</td>
+                            <td>$@month.TotalSpent</td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
     </div>
+    <h4>Transactions</h4>
+    <table id="aprilTable" class="table table-active table-striped table-light">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                <th>@Html.DisplayNameFor(model => model.Date)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.TransactionMonth == ConfigurationManager.AppSettings["April"])
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
 
-    <div id="July" class="tabcontent">
-        <table id="julyTable" class="table table-active table-striped table-dark">
+@*May Table*@
+<div id="May" class="tabcontent">
+    <h4>Summary</h4>
+    <div id="summary">
+        <table id="summaryTable" class="table table-active table-striped table-light">
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
-                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
-                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                    <th>Number of Transactions</th>
+                    <th>Average Spent</th>
+                    <th>Total Spent</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var month in ViewBag.Months)
                 {
-                    if (item.TransactionMonth == "July")
+                    if (month.TransactionMonth == ConfigurationManager.AppSettings["May"])
                     {
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
-                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@month.NumOfTransactions</td>
+                            <td>$@month.AverageSpent</td>
+                            <td>$@month.TotalSpent</td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
     </div>
+    <h4>Transactions</h4>
+    <table id="mayTable" class="table table-active table-striped table-light">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                <th>@Html.DisplayNameFor(model => model.Date)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.TransactionMonth == ConfigurationManager.AppSettings["May"])
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
 
-    <div id="August" class="tabcontent">
-        <table id="augustTable" class="table table-active table-striped table-dark">
+@*June Table*@
+<div id="June" class="tabcontent">
+    <h4>Summary</h4>
+    <div id="summary">
+        <table id="summaryTable" class="table table-active table-striped table-light">
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
-                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
-                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                    <th>Number of Transactions</th>
+                    <th>Average Spent</th>
+                    <th>Total Spent</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var month in ViewBag.Months)
                 {
-                    if (item.TransactionMonth == "August")
+                    if (month.TransactionMonth == ConfigurationManager.AppSettings["June"])
                     {
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
-                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@month.NumOfTransactions</td>
+                            <td>$@month.AverageSpent</td>
+                            <td>$@month.TotalSpent</td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
     </div>
+    <h4>Transactions</h4>
+    <table id="juneTable" class="table table-active table-striped table-light">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                <th>@Html.DisplayNameFor(model => model.Date)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.TransactionMonth == ConfigurationManager.AppSettings["June"])
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
 
-    <div id="September" class="tabcontent">
-        <table id="septemberTable" class="table table-active table-striped table-dark">
+@*July Table*@
+<div id="July" class="tabcontent">
+    <h4>Summary</h4>
+    <div id="summary">
+        <table id="summaryTable" class="table table-active table-striped table-light">
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
-                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
-                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                    <th>Number of Transactions</th>
+                    <th>Average Spent</th>
+                    <th>Total Spent</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var month in ViewBag.Months)
                 {
-                    if (item.TransactionMonth == "September")
+                    if (month.TransactionMonth == ConfigurationManager.AppSettings["July"])
                     {
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
-                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@month.NumOfTransactions</td>
+                            <td>$@month.AverageSpent</td>
+                            <td>$@month.TotalSpent</td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
     </div>
+    <h4>Transactions</h4>
+    <table id="julyTable" class="table table-active table-striped table-light">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                <th>@Html.DisplayNameFor(model => model.Date)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.TransactionMonth == ConfigurationManager.AppSettings["July"])
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
 
-    <div id="October" class="tabcontent">
-        <table id="octoberTable" class="table table-active table-striped table-dark">
+@*August Table*@
+<div id="August" class="tabcontent">
+    <h4>Summary</h4>
+    <div id="summary">
+        <table id="summaryTable" class="table table-active table-striped table-light">
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
-                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
-                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                    <th>Number of Transactions</th>
+                    <th>Average Spent</th>
+                    <th>Total Spent</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var month in ViewBag.Months)
                 {
-                    if (item.TransactionMonth == "October")
+                    if (month.TransactionMonth == ConfigurationManager.AppSettings["August"])
                     {
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
-                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@month.NumOfTransactions</td>
+                            <td>$@month.AverageSpent</td>
+                            <td>$@month.TotalSpent</td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
     </div>
+    <h4>Transactions</h4>
+    <table id="augustTable" class="table table-active table-striped table-light">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                <th>@Html.DisplayNameFor(model => model.Date)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.TransactionMonth == ConfigurationManager.AppSettings["August"])
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
 
-    <div id="November" class="tabcontent">
-        <table id="novemberTable" class="table table-active table-striped table-dark">
+@*September Table*@
+<div id="September" class="tabcontent">
+    <h4>Summary</h4>
+    <div id="summary">
+        <table id="summaryTable" class="table table-active table-striped table-light">
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
-                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
-                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                    <th>Number of Transactions</th>
+                    <th>Average Spent</th>
+                    <th>Total Spent</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var month in ViewBag.Months)
                 {
-                    if (item.TransactionMonth == "November")
+                    if (month.TransactionMonth == ConfigurationManager.AppSettings["September"])
                     {
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
-                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@month.NumOfTransactions</td>
+                            <td>$@month.AverageSpent</td>
+                            <td>$@month.TotalSpent</td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
     </div>
+    <h4>Transactions</h4>
+    <table id="septemberTable" class="table table-active table-striped table-light">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                <th>@Html.DisplayNameFor(model => model.Date)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.TransactionMonth == ConfigurationManager.AppSettings["September"])
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
 
-    <div id="December" class="tabcontent">
-        <table id="decemberTable" class="table table-active table-striped table-dark">
+@*October Table*@
+<div id="October" class="tabcontent">
+    <h4>Summary</h4>
+    <div id="summary">
+        <table id="summaryTable" class="table table-active table-striped table-light">
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
-                    <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
-                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                    <th>Number of Transactions</th>
+                    <th>Average Spent</th>
+                    <th>Total Spent</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var month in ViewBag.Months)
                 {
-                    if (item.TransactionMonth == "December")
+                    if (month.TransactionMonth == ConfigurationManager.AppSettings["October"])
                     {
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
-                            <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@month.NumOfTransactions</td>
+                            <td>$@month.AverageSpent</td>
+                            <td>$@month.TotalSpent</td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
     </div>
+    <h4>Transactions</h4>
+    <table id="octoberTable" class="table table-active table-striped table-light">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                <th>@Html.DisplayNameFor(model => model.Date)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.TransactionMonth == ConfigurationManager.AppSettings["October"])
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+@*November Table*@
+<div id="November" class="tabcontent">
+    <h4>Summary</h4>
+    <div id="summary">
+        <table id="summaryTable" class="table table-active table-striped table-light">
+            <thead>
+                <tr>
+                    <th>Number of Transactions</th>
+                    <th>Average Spent</th>
+                    <th>Total Spent</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var month in ViewBag.Months)
+                {
+                    if (month.TransactionMonth == ConfigurationManager.AppSettings["November"])
+                    {
+                        <tr>
+                            <td>@month.NumOfTransactions</td>
+                            <td>$@month.AverageSpent</td>
+                            <td>$@month.TotalSpent</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <h4>Transactions</h4>
+    <table id="novemberTable" class="table table-active table-striped table-light">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                <th>@Html.DisplayNameFor(model => model.Date)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.TransactionMonth == ConfigurationManager.AppSettings["November"])
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+@*December Table*@
+<div id="December" class="tabcontent">
+    <h4>Summary</h4>
+    <div id="summary">
+        <table id="summaryTable" class="table table-active table-striped table-light">
+            <thead>
+                <tr>
+                    <th>Number of Transactions</th>
+                    <th>Average Spent</th>
+                    <th>Total Spent</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var month in ViewBag.Months)
+                {
+                    if (month.TransactionMonth == ConfigurationManager.AppSettings["December"])
+                    {
+                        <tr>
+                            <td>@month.NumOfTransactions</td>
+                            <td>$@month.AverageSpent</td>
+                            <td>$@month.TotalSpent</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <h4>Transactions</h4>
+    <table id="decemberTable" class="table table-active table-striped table-light">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.WorkExpense)</th>
+                <th>@Html.DisplayNameFor(model => model.Date)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.TransactionMonth == ConfigurationManager.AppSettings["December"])
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.WorkExpense)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
 
 
 <p>

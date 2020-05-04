@@ -159,6 +159,7 @@
     <Compile Include="Income.cs">
       <DependentUpon>Finances.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Monthly.cs" />
     <Compile Include="Models\Yearly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
