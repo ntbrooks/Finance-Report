@@ -64,6 +64,21 @@ namespace ExpenseReport.Controllers
         {
             var expenseList = DB.Expenses.ToList();
 
+            var yearTotal = new Yearly();
+            yearTotal.NumOfTransactions = expenseList.Count;
+
+            foreach (var item in expenseList)
+            {
+                yearTotal.TotalSpent += item.Amount;
+            }
+
+            var avg = yearTotal.TotalSpent / yearTotal.NumOfTransactions;
+            yearTotal.AverageSpent = Decimal.Round(avg, 2);
+
+            ViewBag.TotalSpent = yearTotal.TotalSpent;
+            ViewBag.NumTransactions = yearTotal.NumOfTransactions;
+            ViewBag.AverageSpent = yearTotal.AverageSpent;
+
             var transType = expenseList.GroupBy(x => x.TransactionType)
                 .Select(group => new { Expens = group.Key, expenseList = group.ToList() })
                 .ToList();
@@ -74,9 +89,8 @@ namespace ExpenseReport.Controllers
 
             foreach (var lines in transType)
             {
-                Yearly year = new Yearly();
+                var year = new Yearly();
                 year.TransactionType = lines.Expens;
-
                 year.NumOfTransactions = lines.expenseList.Count;
                 decimal total = 0;
 
@@ -101,7 +115,7 @@ namespace ExpenseReport.Controllers
             return View();
         }
 
-        public ActionResult Submission()
+        public ActionResult Submit()
         {
             return View();
         }
@@ -131,7 +145,7 @@ namespace ExpenseReport.Controllers
 
             DB.SaveChanges();
 
-            return View("Submission");
+            return View("Submit");
         }
 
     }

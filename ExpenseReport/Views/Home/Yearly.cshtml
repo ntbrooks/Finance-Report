@@ -1,42 +1,62 @@
 ﻿@model IEnumerable<ExpenseReport.Models.Yearly>
 
 
-
 <br />
-<div>
     <h4>Yearly Expenses</h4>
-</div>
+
+    <div class="container-fluid">
+        <table class="table table-active table-striped table-primary">
+            <tbody>
+                <tr>
+                    <td width="250px">Year Totals</td>
+                    <td width="250px">Number of Transactions</td>
+                    <td width="250px">Total Spent</td>
+                    <td width="250px">Average Transaction</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@ViewBag.NumTransactions</td>
+                    <td>$@ViewBag.TotalSpent</td>
+                    <td>$@ViewBag.AverageSpent</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br />
+
+<h4>Year By Type</h4>
 
 @foreach (var title in ViewBag.Titles)
 {
-<div class="container-fluid">
-    <table class="table table-dark table-striped">
-        <tbody>
-            <tr>
-                <td width="250px">@title</td>
-                <td width="250px">Number of Transactions</td>
-                <td width="250px">Total Spent</td>
-                <td width="250px">Average Transaction</td>
-            </tr>
-            <tr>
-                @foreach (var item in Model)
-                {
-                    if (item.TransactionType == title)
+    <div class="container-fluid">
+        <table class="table table-active table-striped table-primary">
+            <tbody>
+                <tr>
+                    <td width="250px">@title</td>
+                    <td width="250px">Number of Transactions</td>
+                    <td width="250px">Total Spent</td>
+                    <td width="250px">Average Transaction</td>
+                </tr>
+                <tr>
+                    @foreach (var item in Model)
                     {
-                        <td></td>
-                        <td>@Html.Name(item.NumOfTransactions.ToString())</td>
-                        <td>$@Html.Name(item.TotalSpent.ToString()).ToHtmlString()</td>
-                        <td>$@Html.Name(item.AverageSpent.ToString()).ToHtmlString()</td>
+                        if (item.TransactionType == title)
+                        {
+                            <td></td>
+                            <td>@Html.Name(item.NumOfTransactions.ToString())</td>
+                            <td>$@Html.Name(item.TotalSpent.ToString()).ToHtmlString()</td>
+                            <td>$@Html.Name(item.AverageSpent.ToString()).ToHtmlString()</td>
+                        }
                     }
-                }
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-
+                </tr>
+            </tbody>
+        </table>
+    </div>
 }
 
+<p>
+    @Html.ActionLink("Home", "Index")
+</p>
 
 
 

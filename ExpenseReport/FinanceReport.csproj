@@ -322,7 +322,7 @@
     <Content Include="Views\Home\Monthly.cshtml" />
     <Content Include="Views\Home\Income.cshtml" />
     <Content Include="Views\Home\Bills.cshtml" />
-    <Content Include="Views\Home\Submission.cshtml" />
+    <Content Include="Views\Home\Submit.cshtml" />
     <Content Include="Views\Home\Yearly.cshtml" />
   </ItemGroup>
   <ItemGroup>
